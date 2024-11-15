@@ -91,7 +91,7 @@ List<Widget> getDiarySettings({
           decoration: const InputDecoration(
             labelText: 'Daily calories',
           ),
-          enabled: !(settings.value.diarySummary == 'DiarySummary.current') ?? true,
+          enabled: (settings.value.diarySummary != 'DiarySummary.current' && settings.value.diarySummary != 'DiarySummary.none') ?? false,
         ),
       ),
     if ('daily protein'.contains(term))
@@ -107,7 +107,7 @@ List<Widget> getDiarySettings({
           decoration: const InputDecoration(
             labelText: 'Daily protein',
           ),
-          enabled: !(settings.value.diarySummary == 'DiarySummary.current') ?? true,
+          enabled: (settings.value.diarySummary != 'DiarySummary.current' && settings.value.diarySummary != 'DiarySummary.none') ?? false,
         ),
       ),
     if ('daily fat'.contains(term))
@@ -123,7 +123,7 @@ List<Widget> getDiarySettings({
           decoration: const InputDecoration(
             labelText: 'Daily fat',
           ),
-          enabled: !(settings.value.diarySummary == 'DiarySummary.current') ?? true,
+          enabled: (settings.value.diarySummary != 'DiarySummary.current' && settings.value.diarySummary != 'DiarySummary.none') ?? false,
         ),
       ),
     if ('daily carb'.contains(term))
@@ -139,7 +139,7 @@ List<Widget> getDiarySettings({
           decoration: const InputDecoration(
             labelText: 'Daily carbs',
           ),
-          enabled: !(settings.value.diarySummary == 'DiarySummary.current') ?? true,
+          enabled: (settings.value.diarySummary != 'DiarySummary.current' && settings.value.diarySummary != 'DiarySummary.none') ?? false,
         ),
       ),
     if ('select name on submit'.contains(term))
