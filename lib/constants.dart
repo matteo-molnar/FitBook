@@ -17,7 +17,7 @@ enum Period {
   year,
 }
 
-enum DiarySummary { remaining, division, both, none }
+enum DiarySummary { remaining, division, both, current, none }
 
 List<String> units = [
   'serving',

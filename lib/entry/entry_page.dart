@@ -106,29 +106,38 @@ class EntryPageState extends State<EntryPage> {
               carb =
                   "${((settings.dailyCarb ?? 0) - totalCarb).toStringAsFixed(0)} (${settings.dailyCarb} g)";
               break;
+            case 'DiarySummary.current':
+              cals =
+                  "${totalCals.toStringAsFixed(0)} kcal";
+              protein =
+                  "${totalProtein.toStringAsFixed(0)} g";
+              fat = "${totalFat.toStringAsFixed(0)} g";
+              carb =
+                  "${totalCarb.toStringAsFixed(0)} g";
+              break;
             case 'DiarySummary.none':
               break;
           }
 
           final children = [
-            if (settings.dailyCalories != null)
+            if (settings.diarySummary == 'DiarySummary.current' || (settings.dailyCalories != null && settings.diarySummary != 'DiarySummary.none'))
               Text(
-                cals,
+                "Calories\n$cals",
                 style: TextStyle(color: Theme.of(context).colorScheme.primary),
               ),
-            if (settings.dailyProtein != null)
+            if (settings.diarySummary == 'DiarySummary.current' || (settings.dailyProtein != null && settings.diarySummary != 'DiarySummary.none'))
               Text(
-                protein,
+                "Protein\n$protein",
                 style: TextStyle(color: Theme.of(context).colorScheme.primary),
               ),
-            if (settings.dailyFat != null)
+            if (settings.diarySummary == 'DiarySummary.current' || (settings.dailyFat != null && settings.diarySummary != 'DiarySummary.none'))
               Text(
-                fat,
+                "Fat\n$fat",
                 style: TextStyle(color: Theme.of(context).colorScheme.primary),
               ),
-            if (settings.dailyCarb != null)
+            if (settings.diarySummary == 'DiarySummary.current' || (settings.dailyCarb != null && settings.diarySummary != 'DiarySummary.none'))
               Text(
-                carb,
+                "Carbs\n$carb",
                 style: TextStyle(color: Theme.of(context).colorScheme.primary),
               ),
           ];

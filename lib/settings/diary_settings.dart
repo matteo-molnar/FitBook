@@ -65,6 +65,10 @@ List<Widget> getDiarySettings({
               child: const Text("Both - remaining (total)"),
             ),
             DropdownMenuItem(
+              value: DiarySummary.current.toString(),
+              child: const Text("Only current"),
+            ),
+            DropdownMenuItem(
               value: DiarySummary.none.toString(),
               child: const Text("None"),
             ),
@@ -80,13 +84,14 @@ List<Widget> getDiarySettings({
         child: TextField(
           controller: calories,
           onChanged: (value) => db.settings.update().write(
-                SettingsCompanion(dailyCalories: Value(int.parse(value))),
+                SettingsCompanion(dailyCalories: Value(int.tryParse(value))),
               ),
           onTap: () => selectAll(calories),
           keyboardType: TextInputType.number,
           decoration: const InputDecoration(
             labelText: 'Daily calories',
           ),
+          enabled: !(settings.value.diarySummary == 'DiarySummary.current') ?? true,
         ),
       ),
     if ('daily protein'.contains(term))
@@ -95,13 +100,14 @@ List<Widget> getDiarySettings({
         child: TextField(
           controller: protein,
           onChanged: (value) => db.settings.update().write(
-                SettingsCompanion(dailyProtein: Value(int.parse(value))),
+                SettingsCompanion(dailyProtein: Value(int.tryParse(value))),
               ),
           onTap: () => selectAll(protein),
           keyboardType: TextInputType.number,
           decoration: const InputDecoration(
             labelText: 'Daily protein',
           ),
+          enabled: !(settings.value.diarySummary == 'DiarySummary.current') ?? true,
         ),
       ),
     if ('daily fat'.contains(term))
@@ -110,13 +116,14 @@ List<Widget> getDiarySettings({
         child: TextField(
           controller: fat,
           onChanged: (value) => db.settings.update().write(
-                SettingsCompanion(dailyFat: Value(int.tryParse(value)!)),
+                SettingsCompanion(dailyFat: Value(int.tryParse(value))),
               ),
           onTap: () => selectAll(fat),
           keyboardType: TextInputType.number,
           decoration: const InputDecoration(
             labelText: 'Daily fat',
           ),
+          enabled: !(settings.value.diarySummary == 'DiarySummary.current') ?? true,
         ),
       ),
     if ('daily carb'.contains(term))
@@ -132,6 +139,7 @@ List<Widget> getDiarySettings({
           decoration: const InputDecoration(
             labelText: 'Daily carbs',
           ),
+          enabled: !(settings.value.diarySummary == 'DiarySummary.current') ?? true,
         ),
       ),
     if ('select name on submit'.contains(term))

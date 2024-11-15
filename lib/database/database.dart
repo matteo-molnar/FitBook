@@ -191,6 +191,8 @@ class AppDatabase extends _$AppDatabase {
             diarySummary = DiarySummary.division;
           else if (summary == DiarySummary.remaining.toString())
             diarySummary = DiarySummary.remaining;
+          else if (summary == DiarySummary.current.toString())
+            diarySummary = DiarySummary.current;
 
           systemColors = prefs.getBool("systemColors") ?? false;
           favoriteNew = prefs.getBool("favoriteNew") ?? false;
